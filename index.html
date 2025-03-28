@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Gaze</title>
+        <meta charset="UTF-16">
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@^4.2.1/dist/aframe-event-set-component.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <a-assets>
+            </a-assets>
+            <a-camera>
+                <!-- Animationsring -->
+                <a-entity
+                    animation__click="property: scale; 
+                                    startEvents: click; 
+                                    easing: easeInCubic; 
+                                    dur: 150; 
+                                    from: 0.1 0.1 0.1; 
+                                    to: 0.3 0.3 0.3"
+                    animation__fusing="property: scale;
+                                    startEvents: fusing;
+                                    easing: easeInCubic; 
+                                    dur: 1500;
+                                    from: 0.3 0.3 0.3;
+                                    to: 0.1 0.1 0.1"
+                    animation__mouseleave="property: scale;
+                                    startEvents: mouseleave;
+                                    easing: easeInCubic;
+                                    dur: 500;
+                                    to: 0.3 0.3 0.3"
+                    cursor="fuse: true"
+                    raycaster="objects: .clickable"
+                    material="color: black; shader: flat"
+                    position="0 0 -3"
+                    geometry="primitive: ring"></a-entity>
+            </a-camera>
+            
+            <!-- Boden und Wand -->
+            <a-plane position="0 -3 -4" rotation="-90 0 0" width="10" height="10" color="#333333"></a-plane>
+            <a-plane position="0 0 -4" rotation="0 0 0" width="10" height="12" color="#aaaaaa"></a-plane>
+            
+            <!-- Quiz-Frage -->
+            
+            <a-text id="question" position="0 5 -3.99" rotation="0 0 0" width="8" height="2" color="#666666" align="center" value="QUESTION" font="../assets/fonts/ToJaFont-msdf/ToJaFont-msdf.json" negate="false"></a-text>
+            
+            <!-- Quiz-Antworten -->
+            <a-plane id="answer-board-a" position="-2.3 3 -3.99" rotation="0 0 0" width="4" height="2" color="#666666"></a-plane>
+            <a-text id="answer-a" position="-2.3 3 -3.98" rotation="0 0 0" width="8" height="4" color="#ffffff" align="center" value="Answer A"></a-text>
+            <a-plane id="answer-board-b" position="2.3 3 -3.99" rotation="0 0 0" width="4" height="2" color="#666666"></a-plane>
+            <a-text id="answer-b" position="2.3 3 -3.98" rotation="0 0 0" width="8" height="4" color="#ffffff" align="center" value="Answer B"></a-text>
+            <a-plane id="answer-board-c" position="-2.3 0.6 -3.99" rotation="0 0 0" width="4" height="2" color="#666666"></a-plane>
+            <a-text id="answer-c" position="-2.3 0.6 -3.98" rotation="0 0 0" width="8" height="4" color="#ffffff" align="center" value="Answer C"></a-text>
+            <a-plane id="answer-board-d" position="2.3 0.6 -3.99" rotation="0 0 0" width="4" height="2" color="#666666"></a-plane>
+            <a-text id="answer-d" position="2.3 0.6 -3.98" rotation="0 0 0" width="8" height="4" color="#ffffff" align="center" value="Answer D"></a-text>
+            
+            <!-- Quiz-Next -->
+            <a-plane id="next-board" position="0 -1.8 -3.99" rotation="0 0 0" width="4" height="2" color="#666666"></a-plane>
+            <a-text id="next-text" position="0 -1.8 -3.98" rotation="0 0 0" width="8" height="4" color="#ffffff" align="center" value="Next"></a-text>
+            <a-sky color="#6699ff"></a-sky>
+        </a-scene>
+    </body>
+    <script src="game.js"></script>
+</html>
